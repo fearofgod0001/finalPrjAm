@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,18 +25,39 @@ class ItemRepositoryTest {
     @Test
     @DisplayName("상품 저장 테스트")
     public void createItemTest(){
-        Item item = new Item(); //엔티티를 객체화
-        item.setItemNm("테스트 상품");
-        item.setPrice(10000);
-        item.setItemDetail("테스트 상품의 상세 설명");
-        item.setItemSellStatus(ItemSellStatus.SELL);
-        item.setStockNumber(100);
-        item.setRegTime(LocalDateTime.now());
-        item.setUpdateTime(LocalDateTime.now());
-        Item saveItem = itemRepository.save(item);
-        System.out.println(saveItem); //수 많은 실행 메시지 중 출력을 하는 것
+        //상품 조회를 위한 상품 10개를 생성
+        for(int i=1; i <=10; i++){
+            Item item = new Item(); //엔티티를 객체화
+            item.setItemNm("테스트 상품" + i);
+            item.setPrice(10000);
+            item.setItemDetail("테스트 상품의 상세 설명" + i);
+            item.setItemSellStatus(ItemSellStatus.SELL);
+            item.setStockNumber(100);
+            item.setRegTime(LocalDateTime.now());
+            item.setUpdateTime(LocalDateTime.now());
+            itemRepository.save(item); //저장
+        }
+            //단순 상품 저장을 위한 테스트
+//        Item item = new Item(); //엔티티를 객체화
+//        item.setItemNm("테스트 상품");
+//        item.setPrice(10000);
+//        item.setItemDetail("테스트 상품의 상세 설명");
+//        item.setItemSellStatus(ItemSellStatus.SELL);
+//        item.setStockNumber(100);
+//        item.setRegTime(LocalDateTime.now());
+//        item.setUpdateTime(LocalDateTime.now());
+//        Item saveItem = itemRepository.save(item);
+//        System.out.println(saveItem); //수 많은 실행 메시지 중 출력을 하여 찾을 수 있게 함
 //        대신 @Slf4j 를 사용하여 log를 찍어본다.
 //        log.info(String.valueOf(saveItem));
     }
-
+    @Test
+    @DisplayName("상품명 조회 테스트")
+    public void findByItemNmTest(){
+        this.createItemTest(); //위에 생성한 10개의 상품
+        List<Item> itemList = itemRepository.findAll(); //해당 아이템들을 모두 찾음
+        for(Item e : itemList){
+            System.out.println(e.toString());
+        }
+    }
 }
