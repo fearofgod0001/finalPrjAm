@@ -57,7 +57,7 @@ class ItemRepositoryTest {
         this.createItemTest(); //위에 생성한 10개의 상품
         List<Item> itemList = itemRepository.findAll(); //해당 아이템들을 모두 찾음
         for(Item e : itemList){
-            System.out.println(e.toString());
+            System.out.println("결과 : " + e.toString());
         }
     }
 }
