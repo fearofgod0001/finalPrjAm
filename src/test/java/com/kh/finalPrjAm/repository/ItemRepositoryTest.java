@@ -14,10 +14,11 @@ import java.time.LocalDateTime;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j //디버깅하거나 로그 파일을 만들 때 사용
-@SpringBootTest //테스트임을 선언함
+@SpringBootTest //단위 테스트 및 통합 테스트를 위해 스프링부트에서 제공하는 어노테이션
 @TestPropertySource(locations = "classpath:application-test.properties")
+//테스트코드 실행 시 해당 설정 파일을 우선적으로 불러옴
 class ItemRepositoryTest {
-    @Autowired
+    @Autowired // 의존성을 주입 받음
     ItemRepository itemRepository;
 
     @Test
