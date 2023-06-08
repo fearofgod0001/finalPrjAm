@@ -10,4 +10,15 @@ import java.util.List;
 public interface ItemRepository extends JpaRepository<Item, Long> {
 
     List<Item> findByItemNm(String itemNm); //조건절에 들어갈 이름을 설정한다.
+
+    //OR 조건 처리
+    List<Item> findByItemNmOrItemDetail(String itemNm, String itemDetail);
+
+    //LessThan : 매개변수로 전달 받은 값보다 작은 상품 조회
+    List<Item> findByPriceLessThan(Integer price);
+
+    //OrderBy 로 정렬 : OrderBy + 속성명 + ASC or DESC(내림차순)
+    List<Item> findByPriceLessThanOrderByPriceDesc(Integer price);
+
+
 }

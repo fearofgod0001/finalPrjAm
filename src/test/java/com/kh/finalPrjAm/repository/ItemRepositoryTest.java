@@ -29,7 +29,7 @@ class ItemRepositoryTest {
         for(int i=1; i <=10; i++){
             Item item = new Item(); //엔티티를 객체화
             item.setItemNm("테스트 상품" + i);
-            item.setPrice(10000);
+            item.setPrice(10000 + i*10);
             item.setItemDetail("테스트 상품의 상세 설명" + i);
             item.setItemSellStatus(ItemSellStatus.SELL);
             item.setStockNumber(100);
@@ -58,6 +58,34 @@ class ItemRepositoryTest {
 //        List<Item> itemList = itemRepository.findAll(); //해당 아이템들을 모두 찾음
         List<Item> itemList = itemRepository.findByItemNm("테스트 상품5"); //조건절을 걸 수 있음 해당 조건은 repository에서 설정할 수 있다.
         for(Item e : itemList){
+            System.out.println("결과 : " + e.toString());
+        }
+    }
+    @Test
+    @DisplayName("상품명 or 상품상세설명 테스트")
+    public void findByItemNmOrItemDetailTest(){
+        this.createItemTest(); //위에 생성한 10개의 상품
+        List<Item> itemList = itemRepository.findByItemNmOrItemDetail("테스트 상품5","테스트 상품의 상세 설명7");
+        for(Item e: itemList){
+            System.out.println("결과 : " + e.toString());
+        }
+    }
+    @Test
+    @DisplayName("입력 받은 가격보다 작은 상품 조회 테스트")
+    public void findByPriceLessThanTest(){
+        this.createItemTest();
+        List<Item> itemList = itemRepository.findByPriceLessThan(10055);
+        for(Item e: itemList){
+            System.out.println("결과 : " + e.toString());
+        }
+    }
+
+    @Test
+    @DisplayName("가격 내림차순 조회 테스트")
+    public void findByPriceLessThanOrderByPriceDesc(){
+        this.createItemTest();
+        List<Item> itemList = itemRepository.findByPriceLessThanOrderByPriceDesc(10076);
+        for(Item e: itemList){
             System.out.println("결과 : " + e.toString());
         }
     }
