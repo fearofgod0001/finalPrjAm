@@ -3,6 +3,7 @@ package com.kh.finalPrjAm.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.kh.finalPrjAm.entity.Item;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 //JpaRepository는 첫 번째에서 엔티티 타임 클래스를 넣어주고 , 두번째는 기본 키
@@ -20,5 +21,8 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     //OrderBy 로 정렬 : OrderBy + 속성명 + ASC or DESC(내림차순)
     List<Item> findByPriceLessThanOrderByPriceDesc(Integer price);
 
+    // Between : 범위에 해당하는 조건 검색
+    List<Item> findByPriceBetween(Integer min, Integer max);
 
+    //
 }

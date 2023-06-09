@@ -89,4 +89,14 @@ class ItemRepositoryTest {
             System.out.println("결과 : " + e.toString());
         }
     }
+    @Test
+    @DisplayName("가격 범위로 상품 조회 테스트")
+    public void findByPriceBetween(){
+        this.createItemTest();
+        List<Item> itemList = itemRepository.findByPriceBetween(10015,10075);
+        for(Item e: itemList){
+            System.out.println("결과 : " + e.toString());
+        }
+    }
+
 }
