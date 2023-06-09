@@ -98,5 +98,23 @@ class ItemRepositoryTest {
             System.out.println("결과 : " + e.toString());
         }
     }
+    @Test
+    @DisplayName("상품 이름에 대한 부분 문자열 검색 테스트")
+    public void findByItemNmContaining(){
+        this.createItemTest();
+        List<Item> itemList = itemRepository.findByItemNmContaining("테스트");
+        for(Item e: itemList){
+            System.out.println("결과 : " + e.toString());
+        }
+    }
+    @Test
+    @DisplayName("가격 범위로 상품 조회 테스트")
+    public void findByItemDetailTest(){
+        this.createItemTest();
+        List<Item> itemList = itemRepository.findByItemDetail("설명6");
+        for(Item e: itemList){
+            System.out.println("결과 : " + e.toString());
+        }
+    }
 
 }
