@@ -19,4 +19,6 @@ public class Cart {
     @JoinColumn(name="member_id") // 매핑할 외래키 지정
     private Member member;
 
+    private String cartName;
+
 }
