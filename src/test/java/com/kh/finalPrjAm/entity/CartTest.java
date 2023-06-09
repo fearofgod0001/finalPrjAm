@@ -58,6 +58,7 @@ class CartTest {
         System.out.println("회원 userID : " + member.getUserId());
         System.out.println("장바구니 userID : " + saverCart.getMember().getUserId());
         assertEquals(saverCart.getMember().getUserId(), member.getUserId());
-
     }
+
+
 }
