@@ -25,7 +25,7 @@ public class Order {
     //주문 상품 엔티티와 일대다 매핑
     // 외래키(order_id)가 order_item테이블에 있으므로 연관 관계의 주인은 OrderItem엔티티입니다.
     // Order 엔티티가 주인이 아니므로 "mappedBy" 속성으로 연관 관계의 주인을 설정합니다.
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL,orphanRemoval = true)//cascade영속성 orphanRemoval고아객체삭제
     private List<OrderItem> orderItemList = new ArrayList<>();
 
     //주문 상품 엔티티와 일대다 매핑
