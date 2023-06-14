@@ -38,7 +38,7 @@ public class WebSecurityConfig {
 
                 .and()
                 .authorizeRequests()
-                .antMatchers("/auth/**").permitAll()
+                .antMatchers("/auth/**").permitAll() //auth 밑에 가게 만들어야 한다.
                 .anyRequest().authenticated()
 
                 .and()
