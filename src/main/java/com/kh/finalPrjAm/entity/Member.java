@@ -1,12 +1,9 @@
 package com.kh.finalPrjAm.entity;
 import com.kh.finalPrjAm.constant.Authority;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+
 
 //1. Entity로 선언
 @Entity // JPA에 entity 클래스 임을 알려줌, DB Table로 만들어져야 할 클래스
@@ -15,6 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
+@NoArgsConstructor
 public class Member {
     //3. 컬럼 생성 규칙
     @Id // 해당 필드가 primary key 임을 지정
