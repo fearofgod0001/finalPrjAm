@@ -39,4 +39,16 @@ public class ThymeleafController {
         model.addAttribute("itemDtoList",itemDtoList);
         return "thymeleaf/thymeleafItemList";
     }
+
+    @GetMapping("/link-test")
+    public String thymeleafLinkTest(){
+        return "thymeleaf/thymeleafItemLinkTest";
+    }
+
+    @GetMapping("/link-param")
+    public String thymeleafLinkTest(String param1, String param2, Model model){
+        model.addAttribute("param1",param1);
+        model.addAttribute("param2",param2);
+        return "thymeleaf/thymeleafLinkParam";
+    }
 }
