@@ -45,6 +45,11 @@ public class ItemService {
             itemDtos.add(itemDto);
         }
         return itemDtos;
-
     }
+
+    //상품 저장
+    public void saveItem(Item item){
+        itemRepository.save(item);
+    }
+
 }
