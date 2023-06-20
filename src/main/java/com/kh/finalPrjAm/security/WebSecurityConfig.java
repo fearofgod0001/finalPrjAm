@@ -38,7 +38,7 @@ public class WebSecurityConfig {
 
                 .and()
                 .authorizeRequests()
-                .antMatchers("/auth/**","/thymeleaf/**").permitAll() //auth 밑에 가게 만들어야 한다.
+                .antMatchers("/auth/**","/thymeleaf1/**","/thymeleaf/**").permitAll() //auth 밑에 가게 만들어야 한다.
                 .antMatchers("/v2/api-docs", "/swagger-resources/**", "/swagger-ui.html", "/webjars/**", "/swagger/**", "/sign-api/exception").permitAll()
 
                 .anyRequest().authenticated()

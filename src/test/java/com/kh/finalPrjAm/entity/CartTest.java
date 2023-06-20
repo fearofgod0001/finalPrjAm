@@ -37,7 +37,6 @@ class CartTest {
         member.setPassword("829182");
         member.setName("이태석");
         member.setEmail("dl88@gmail.com");
-        member.setJoinTime(LocalDateTime.now());
         return member;
     }
     @Test
